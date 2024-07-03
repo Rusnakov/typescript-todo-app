@@ -33,7 +33,9 @@ function displayTodoList(): void {
 
 enum Commands {
   Add = "Dodaj nowe zadanie",
-  Toggle = "Pokaż lub ukryj wykonane",
+  Complete = "Wykonanie zadania",
+  Toggle = "Pokaż lub ukryj wykonane zadania",
+  Purge = "Usuń wykonane zadania",
   Quit = "Koniec",
 }
 
@@ -45,6 +47,33 @@ function promptAdd(): void {
       if (answers["add"] !== "") {
         collection.addTodo(answers["add"]);
       }
+      promptUser();
+    });
+}
+
+function promptComplete(): void {
+  console.clear();
+  inquirer
+    .prompt({
+      type: "checkbox",
+      name: "complete",
+      message: "Oznaczenie zadań jako wykonanych",
+      choices: collection.getTodoItems(showCompleted).map((item) => ({
+        name: item.task,
+        value: item.id,
+        chcked: item.complete,
+      })),
+    })
+    .then((answers) => {
+      let completedTask = answers["complete"] as number[];
+      collection
+        .getTodoItems(true)
+        .forEach((item) =>
+          collection.markComplete(
+            item.id,
+            completedTask.find((id) => id === item.id) != undefined
+          )
+        );
       promptUser();
     });
 }
@@ -63,11 +92,6 @@ function promptUser(): void {
       },
     ])
     .then((answers) => {
-      /*
-      if (answers["command"] !== Commands.Quit) {
-        promptUser();
-      }
-      */
       switch (answers["command"]) {
         case Commands.Toggle:
           showCompleted = !showCompleted;
@@ -75,6 +99,17 @@ function promptUser(): void {
           break;
         case Commands.Add:
           promptAdd();
+          break;
+        case Commands.Complete:
+          if (collection.getItemCounts().incomplete > 0) {
+            promptComplete();
+          } else {
+            promptUser();
+          }
+          break;
+        case Commands.Purge:
+          collection.removeComplete();
+          promptUser();
           break;
       }
     });
