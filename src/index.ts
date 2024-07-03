@@ -32,8 +32,21 @@ function displayTodoList(): void {
 }
 
 enum Commands {
+  Add = "Dodaj nowe zadanie",
   Toggle = "Pokaż lub ukryj wykonane",
   Quit = "Koniec",
+}
+
+function promptAdd(): void {
+  console.clear();
+  inquirer
+    .prompt({ type: "input", name: "add", message: "Podaj zadanie:" })
+    .then((answers) => {
+      if (answers["add"] !== "") {
+        collection.addTodo(answers["add"]);
+      }
+      promptUser();
+    });
 }
 
 function promptUser(): void {
@@ -46,7 +59,7 @@ function promptUser(): void {
         name: "command",
         message: "Wybierz opcję",
         choices: Object.values(Commands),
-        badProperty: true
+        badProperty: true,
       },
     ])
     .then((answers) => {
@@ -55,12 +68,15 @@ function promptUser(): void {
         promptUser();
       }
       */
-        switch (answers["command"]) {
-            case Commands.Toggle:
-                showCompleted = !showCompleted;
-                promptUser();
-                break;
-        }
+      switch (answers["command"]) {
+        case Commands.Toggle:
+          showCompleted = !showCompleted;
+          promptUser();
+          break;
+        case Commands.Add:
+          promptAdd();
+          break;
+      }
     });
 }
 

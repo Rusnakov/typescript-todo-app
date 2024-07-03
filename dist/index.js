@@ -25,9 +25,21 @@ function displayTodoList() {
 }
 var Commands;
 (function (Commands) {
+    Commands["Add"] = "Dodaj nowe zadanie";
     Commands["Toggle"] = "Poka\u017C lub ukryj wykonane";
     Commands["Quit"] = "Koniec";
 })(Commands || (Commands = {}));
+function promptAdd() {
+    console.clear();
+    inquirer
+        .prompt({ type: "input", name: "add", message: "Podaj zadanie:" })
+        .then((answers) => {
+        if (answers["add"] !== "") {
+            collection.addTodo(answers["add"]);
+        }
+        promptUser();
+    });
+}
 function promptUser() {
     console.clear();
     displayTodoList();
@@ -38,7 +50,7 @@ function promptUser() {
             name: "command",
             message: "Wybierz opcję",
             choices: Object.values(Commands),
-            badProperty: true
+            badProperty: true,
         },
     ])
         .then((answers) => {
@@ -51,6 +63,9 @@ function promptUser() {
             case Commands.Toggle:
                 showCompleted = !showCompleted;
                 promptUser();
+                break;
+            case Commands.Add:
+                promptAdd();
                 break;
         }
     });
