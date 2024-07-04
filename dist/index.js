@@ -3,18 +3,18 @@
 console.log("Lista Tomasza");*/
 Object.defineProperty(exports, "__esModule", { value: true });
 const todoItem_1 = require("./todoItem");
-const todoCollection_1 = require("./todoCollection");
 const inquirer = require("inquirer"); //działające dla wersji 7.3.3
 // w książce podana jest inport, który się kompiluje ale przy uruchomieniu wywala błąd
 //import * as inquirer from 'inquirer';
 //import { input } from '@inquirer/prompts'
+const jsonTodoCollection_1 = require("./jsonTodoCollection");
 let todos = [
     new todoItem_1.TodoItem(1, "Kupić kwiaty"),
     new todoItem_1.TodoItem(2, "Odebrać buty"),
     new todoItem_1.TodoItem(3, "Zamówić bilety"),
     new todoItem_1.TodoItem(4, "Zadzwonić do Siebie", true),
 ];
-let collection = new todoCollection_1.TodoCollection("Tomasz", todos);
+let collection = new jsonTodoCollection_1.JsonTodoCollection("Tomasz", todos);
 let showCompleted = true;
 let newId = collection.addTodo("Iść pobiegać");
 let todoItem = collection.getTodoById(newId);

@@ -7,6 +7,7 @@ const inquirer = require("inquirer"); //działające dla wersji 7.3.3
 // w książce podana jest inport, który się kompiluje ale przy uruchomieniu wywala błąd
 //import * as inquirer from 'inquirer';
 //import { input } from '@inquirer/prompts'
+import { JsonTodoCollection } from "./jsonTodoCollection";
 
 let todos: TodoItem[] = [
   new TodoItem(1, "Kupić kwiaty"),
@@ -15,7 +16,7 @@ let todos: TodoItem[] = [
   new TodoItem(4, "Zadzwonić do Siebie", true),
 ];
 
-let collection: TodoCollection = new TodoCollection("Tomasz", todos);
+let collection: TodoCollection = new JsonTodoCollection("Tomasz", todos);
 let showCompleted = true;
 
 let newId: number = collection.addTodo("Iść pobiegać");

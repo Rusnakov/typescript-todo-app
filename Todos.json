@@ -1,0 +1,46 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "task": "Kupić kwiaty",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "task": "Odebrać buty",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "task": "Zamówić bilety",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "task": "Zadzwonić do Siebie",
+      "complete": true
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "task": "Kupić kwiaty",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "task": "Odebrać buty",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "task": "Zamówić bilety",
+      "complete": false
+    },
+    {
+      "id": 5,
+      "task": "Iść pobiegać",
+      "complete": false
+    }
+  ]
+}
