@@ -1,45 +1,28 @@
 {
-  "task": [
-    {
-      "id": 1,
-      "task": "Kupić kwiaty",
-      "complete": false
-    },
+  "tasks": [
     {
       "id": 2,
-      "task": "Odebrać buty",
-      "complete": false
-    },
-    {
-      "id": 3,
-      "task": "Zamówić bilety",
+      "task": "Pobiegać",
       "complete": false
     },
     {
       "id": 4,
-      "task": "Zadzwonić do Siebie",
-      "complete": true
-    }
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "task": "Kupić kwiaty",
+      "task": "Uratować świat",
       "complete": false
     },
     {
-      "id": 2,
-      "task": "Odebrać buty",
+      "id": 1,
+      "task": "Rozpocząć pracę",
       "complete": false
     },
     {
       "id": 3,
-      "task": "Zamówić bilety",
+      "task": "Umyć samochód",
       "complete": false
     },
     {
       "id": 5,
-      "task": "Iść pobiegać",
+      "task": "Kupić kwiaty",
       "complete": false
     }
   ]

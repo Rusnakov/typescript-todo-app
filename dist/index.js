@@ -2,22 +2,21 @@
 /*console.clear();
 console.log("Lista Tomasza");*/
 Object.defineProperty(exports, "__esModule", { value: true });
-const todoItem_1 = require("./todoItem");
 const inquirer = require("inquirer"); //działające dla wersji 7.3.3
 // w książce podana jest inport, który się kompiluje ale przy uruchomieniu wywala błąd
 //import * as inquirer from 'inquirer';
 //import { input } from '@inquirer/prompts'
 const jsonTodoCollection_1 = require("./jsonTodoCollection");
 let todos = [
-    new todoItem_1.TodoItem(1, "Kupić kwiaty"),
-    new todoItem_1.TodoItem(2, "Odebrać buty"),
-    new todoItem_1.TodoItem(3, "Zamówić bilety"),
-    new todoItem_1.TodoItem(4, "Zadzwonić do Siebie", true),
+//new TodoItem(1, "Kupić kwiaty"),
+//new TodoItem(2, "Odebrać buty"),
+//new TodoItem(3, "Zamówić bilety"),
+//new TodoItem(4, "Zadzwonić do Siebie", true),
 ];
 let collection = new jsonTodoCollection_1.JsonTodoCollection("Tomasz", todos);
 let showCompleted = true;
-let newId = collection.addTodo("Iść pobiegać");
-let todoItem = collection.getTodoById(newId);
+//let newId: number = collection.addTodo("Iść pobiegać");
+//let todoItem: TodoItem = collection.getTodoById(newId);
 function displayTodoList() {
     console.log(`Lista ${collection.userName}a ` +
         `(liczba zadań pozostałych do zrobienia: ${collection.getItemCounts().incomplete})`);
@@ -101,11 +100,3 @@ function promptUser() {
     });
 }
 promptUser();
-//console.log(`Lista ${collection.userName}a `+ `(liczba zadań pozostałych do zrobienia: ${ collection.getItemCounts().incomplete})`);
-//todoItem.printDetails();
-/*for (let i=0; i<newId; i++) {
-    todos[i].printDetails();
-}*/
-//collection.addTodo(todoItem);
-//collection.removeComplete();
-//console.log(JSON.stringify(todoItem));

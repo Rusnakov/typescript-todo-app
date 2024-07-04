@@ -13,8 +13,8 @@ export class JsonTodoCollection extends TodoCollection {
   constructor(public userName: string, todoItems: TodoItem[] = []) {
     super(userName, []);
     this.database = lowdb(new FileSync("Todos.json"));
-    if (this.database.has("task").value()) {
-      let dbItems = this.database.get("task").value();
+    if (this.database.has("tasks").value()) {
+      let dbItems = this.database.get("tasks").value();
       dbItems.forEach((item) =>
         this.itemMap.set(
           item.id,
@@ -22,7 +22,7 @@ export class JsonTodoCollection extends TodoCollection {
         )
       );
     } else {
-      this.database.set("task", todoItems).write();
+      this.database.set("tasks", todoItems).write();
       todoItems.forEach((item) => this.itemMap.set(item.id, item));
     }
   }
